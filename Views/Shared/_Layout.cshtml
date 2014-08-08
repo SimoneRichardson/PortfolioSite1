@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    
+    
+    @Styles.Render("~/Content/css")
+    <style>        body {
+            color: red;
+        }
+        h1 {
+            font-family: Arial, sans-serif;
+        }
+       </style>
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <header>
+        <img src ="/Content/logo.png" />
+        <h1>Simone Richardson</h1>
+        <p>This is my first web page, it's very basic but it's helping me understand how HTML works and how to markup my content</p>
+        <button id="color" onclick="ChangeColor()"> Change color </button>
+        <script>
+           
+            var currentColor = "red";
+            var ChangeColor = function(){
+                if (currentColor == "red")
+                {
+                    document.body.style.color = "green";
+                    currentColor = "green";
+                    }else{
+                    document.body.style.color = "red",
+                    currentColor = "red";
+                }
+                return currentColor;
+            }
+        </script>
+        <nav>
+            <ul>
+                <li class="homeLink" data-url="@Url.Action("Index", "Home")">
+                    
+                        Home
+                    
+                </li>
+                <li class="aboutLink" data-url="@Url.Action("About", "Home")">
+                    About
+                </li>
+                <li class="workLink" data-url="@Url.Action("Work", "Home")">
+                    Work
+                 </li>
+                <li class="contactLink" data-url="@Url.Action("Contact", "Home")">
+                   <a href = "@Url.Action("Contact", "Home")">Contact</a> 
+                </li>
+                <li>
+                    <a href ="/content/Resumesquare32013.docx" target="_blank">Resume 
+
+                    </a>
+                </li>
+                   </ul>
+      </nav>
+  </header>
+
+    <div id="content">
+      @RenderBody()
+        </div>
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+    @*Add a link to our custom jQuery script*@
+    <script src="/Scripts/Main.js"></script>
+</body>
+</html>
